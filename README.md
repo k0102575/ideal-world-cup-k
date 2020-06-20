@@ -1,2 +1,7 @@
 # ideal-world-cup-k
-ideal-world-cup
+
+이상형 월드컵
+
+- React
+- styled-component
+- Redux
