@@ -6,13 +6,20 @@ import { Provider as ReduxProvider } from 'react-redux';
 import store from './redux/store';
 
 // Component
-import Count from 'component/Count';
+import { Home, WorldCup, Ranking } from 'component/index';
+
+// Router
+import { BrowserRouter, Route } from 'react-router-dom';
 
 function App() {
   return (
     <ReduxProvider store={store}>
-      <GlobalStyle />
-      <Count />
+      <BrowserRouter>
+        <GlobalStyle />
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/world-cup/:id" exact={true} component={WorldCup} />
+        <Route path="/ranking/:id" exact={true} component={Ranking} />
+      </BrowserRouter>
     </ReduxProvider>
   );
 }
