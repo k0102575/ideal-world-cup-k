@@ -1,5 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default function Ranking() {
-  return <div>Ranking</div>;
-}
+const Ranking = (props) => {
+  const { id } = props.match.params;
+  return <div>{id}</div>;
+};
+
+export default withRouter(Ranking);
