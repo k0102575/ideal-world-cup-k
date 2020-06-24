@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Card } from 'component';
+import styled from 'styled-components';
 
 const Home = () => {
   // Common
@@ -28,23 +30,34 @@ const Home = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        worldCups.map((e, index) => {
-          return (
-            <div key={index}>
-              <p
-                onClick={() => {
-                  history.push(`/world-cup/${e.id}`);
-                }}
-              >
-                {e.id}
-              </p>
-              <p>{e.name}</p>
-            </div>
-          );
-        })
+        <CardContainer>
+          {worldCups.map((worldCup, index) => {
+            return (
+              <Card key={index} {...worldCup} />
+              // <div key={index}>
+              //   <p
+              //     onClick={() => {
+              //       history.push(`/world-cup/${e.id}`);
+              //     }}
+              //   >
+              //     {e.id}
+              //   </p>
+              //   <p>{e.name}</p>
+              // </div>
+            );
+          })}
+        </CardContainer>
       )}
     </>
   );
 };
 
 export default Home;
+
+const CardContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 1rem;
+  width: 70%;
+`;
