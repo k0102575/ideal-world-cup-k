@@ -1,9 +1,11 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const Ranking = (props) => {
-  const { id } = props.match.params;
+const Ranking = () => {
+  const params = useParams();
+  const id = params.id;
+
   return <div>{id}</div>;
 };
 
-export default withRouter(Ranking);
+export default Ranking;

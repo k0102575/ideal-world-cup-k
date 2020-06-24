@@ -1,10 +1,15 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
+  // Common
+  const history = useHistory();
+
+  // useState
   const [worldCups, setWorldCups] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // useEffect
   useEffect(() => {
     setLoading(true);
     fetch('/test.json')
@@ -26,8 +31,12 @@ const Home = () => {
         worldCups.map((e, index) => {
           return (
             <div key={index}>
-              <p>
-                <Link to={`/world-cup/${e.id}`}>{e.id}</Link>
+              <p
+                onClick={() => {
+                  history.push(`/world-cup/${e.id}`);
+                }}
+              >
+                {e.id}
               </p>
               <p>{e.name}</p>
             </div>

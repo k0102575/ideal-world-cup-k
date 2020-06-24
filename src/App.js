@@ -11,20 +11,28 @@ import { Home, WorldCup, Ranking, NotFound } from 'component/index';
 // Router
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-function App() {
+const App = () => {
   return (
     <ReduxProvider store={store}>
       <BrowserRouter>
         <GlobalStyle />
         <Switch>
-          <Route path="/" exact={true} component={Home} />
-          <Route path="/world-cup/:id" component={WorldCup} />
-          <Route path="/ranking/:id" component={Ranking} />
-          <Route component={NotFound} />
+          <Route path="/" exact={true}>
+            <Home />
+          </Route>
+          <Route path="/world-cup/:id">
+            <WorldCup />
+          </Route>
+          <Route path="/ranking/:id">
+            <Ranking />
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
         </Switch>
       </BrowserRouter>
     </ReduxProvider>
   );
-}
+};
 
 export default App;

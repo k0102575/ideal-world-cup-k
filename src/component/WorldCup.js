@@ -1,9 +1,11 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const WorldCup = (props) => {
-  const { id } = props.match.params;
+const WorldCup = () => {
+  const params = useParams();
+  const id = params.id;
+
   return <div>{id}</div>;
 };
 
-export default withRouter(WorldCup);
+export default WorldCup;
