@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Home = () => {
@@ -24,7 +24,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Fragment>
+    <>
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -43,7 +43,7 @@ const Home = () => {
           );
         })
       )}
-    </Fragment>
+    </>
   );
 };
 
