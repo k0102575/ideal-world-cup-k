@@ -56,8 +56,8 @@ export default Home;
 
 const CardContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  margin: 1rem;
-  width: 70%;
+  padding: 1rem;
+  background-color: ${(props) => props.theme.HomeBGColor};
+  height: 100%;
 `;
