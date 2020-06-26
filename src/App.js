@@ -2,13 +2,13 @@ import React from 'react';
 
 // Redux
 import { Provider as ReduxProvider } from 'react-redux';
-import store from './redux/store';
+import store from 'redux/store';
 
 // Component
-import { Header, Home, WorldCup, Ranking, NotFound } from 'component/index';
+import { Header } from 'component/index';
 
 // Router
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Router from 'routes/Router';
 
 // Style
 import { ThemeProvider } from 'styled-components';
@@ -19,24 +19,9 @@ const App = () => {
   return (
     <ReduxProvider store={store}>
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <GlobalStyle />
-          <Header />
-          <Switch>
-            <Route path="/" exact={true}>
-              <Home />
-            </Route>
-            <Route path="/world-cup/:id">
-              <WorldCup />
-            </Route>
-            <Route path="/ranking/:id">
-              <Ranking />
-            </Route>
-            <Route>
-              <NotFound />
-            </Route>
-          </Switch>
-        </BrowserRouter>
+        <GlobalStyle />
+        <Header />
+        <Router />
       </ThemeProvider>
     </ReduxProvider>
   );
