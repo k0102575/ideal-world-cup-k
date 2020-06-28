@@ -1,18 +1,25 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-	* {
-  	box-sizing: border-box;
+	html, body { height: 100%; }
+	body { 
+		margin: 0 auto; 
+		background-color: #f5f5f5;
 	}
 
-	html, 
-	body, 
 	#root {
-  	margin: 0;
-  	padding: 0;
-		height: 100%;
-		overflow:hidden
+  	display: flex;
+		justify-content: center;
+		flex-direction: column;
 	}
+
+	* { box-sizing: border-box; }
+
+	p { margin:0px; }
+
+	button { cursor: pointer; }
+
+	button:focus { outline: 0; }
 `;
 
 export default GlobalStyle;

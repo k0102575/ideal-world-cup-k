@@ -4,9 +4,6 @@ import { Card } from 'component';
 import styled from 'styled-components';
 
 const Home = () => {
-  // Common
-  const history = useHistory();
-
   // useState
   const [worldCups, setWorldCups] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,19 +29,7 @@ const Home = () => {
       ) : (
         <CardContainer>
           {worldCups.map((worldCup, index) => {
-            return (
-              <Card key={index} {...worldCup} />
-              // <div key={index}>
-              //   <p
-              //     onClick={() => {
-              //       history.push(`/world-cup/${e.id}`);
-              //     }}
-              //   >
-              //     {e.id}
-              //   </p>
-              //   <p>{e.name}</p>
-              // </div>
-            );
+            return <Card key={index} {...worldCup} />;
           })}
         </CardContainer>
       )}
@@ -57,7 +42,5 @@ export default Home;
 const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 1rem;
-  background-color: ${(props) => props.theme.HomeBGColor};
-  height: 100%;
+  margin: 1rem;
 `;
