@@ -1,38 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 import { Card } from 'component';
 import styled from 'styled-components';
+import { useQuery } from '@apollo/react-hooks';
+import GET_WORLDCUPS from '../gql/tag';
 
 const Home = () => {
-  // useState
-  const [worldCups, setWorldCups] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { loading, error, data } = useQuery(GET_WORLDCUPS);
 
-  // useEffect
-  useEffect(() => {
-    setLoading(true);
-    fetch('/test.json')
-      .then((response) => response.json())
-      .then((data) => {
-        setWorldCups(data.worldCups);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  if (loading) return <div>...loading</div>;
+
+  if (error) {
+    console.error(error);
+    return <div className={'posts-error-message'}>error occured!</div>;
+  }
 
   return (
     <>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <CardContainer>
-          {worldCups.map((worldCup, index) => {
-            return <Card key={index} {...worldCup} />;
-          })}
-        </CardContainer>
-      )}
+      <CardContainer>
+        {data.worldCups.map((worldCup, index) => {
+          return <Card key={index} {...worldCup} />;
+        })}
+      </CardContainer>
     </>
   );
 };
