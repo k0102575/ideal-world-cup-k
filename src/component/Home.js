@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'component';
 import styled from 'styled-components';
 import { useQuery } from '@apollo/react-hooks';
-import GET_WORLDCUPS from '../gql/tag';
+import { GET_WORLDCUPS } from '../gql/tag';
 
 const Home = () => {
   const { loading, error, data } = useQuery(GET_WORLDCUPS);

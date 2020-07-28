@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const GET_WORLDCUPS = gql`
+export const GET_WORLDCUPS = gql`
   query GET_WORLDCUPS {
     worldCups {
       id
@@ -11,4 +11,13 @@ const GET_WORLDCUPS = gql`
   }
 `;
 
-export default GET_WORLDCUPS;
+export const GET_WORLDCUP = gql`
+  query GET_WORLDCUP($id: Int!) {
+    worldCup(id: $id) {
+      id
+      name
+      description
+      img
+    }
+  }
+`;
