@@ -21,3 +21,9 @@ export const GET_WORLDCUP = gql`
     }
   }
 `;
+
+export const ADD_WORLDCUP = gql`
+  mutation ADD_WORLDCUP($id: Int!, $name: String!, $description: String!) {
+    create_worldcup(id: $id, name: $name, description: $description)
+  }
+`;

@@ -1,11 +1,16 @@
 import React from 'react';
 import { Card } from 'component';
 import styled from 'styled-components';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_WORLDCUPS } from '../gql/tag';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { GET_WORLDCUPS, ADD_WORLDCUP } from '../gql/tag';
 
 const Home = () => {
   const { loading, error, data } = useQuery(GET_WORLDCUPS);
+  const [addTodo, { worldCupData }] = useMutation(ADD_WORLDCUP);
+
+  const handleClick = () => {
+    addTodo({ variables: { id: 130, name: 'test', description: 'mutation Test' } });
+  };
 
   if (loading) return <div>...loading</div>;
 
@@ -16,6 +21,7 @@ const Home = () => {
 
   return (
     <>
+      <button onClick={handleClick}>버튼</button>
       <CardContainer>
         {data.worldCups.map((worldCup, index) => {
           return <Card key={index} {...worldCup} />;
